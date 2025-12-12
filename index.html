@@ -3,196 +3,666 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Miguel Ureña Pliego - CV</title>
+  <title>Miguel Ureña Pliego | Portfolio & CV</title>
+  <!-- Google Fonts: Raleway and Roboto (Common in academic/tech portfolios) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --accent-color: #2e7d32; /* Keeping your green identity */
+      --secondary-text: #666666;
+      --border-color: #e0e0e0;
+      --card-overlay: rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Roboto', sans-serif; /* Clean body text */
       margin: 0;
       padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      margin-top: 0;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    /* --- Navigation --- */
+    nav {
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-brand h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .nav-brand span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--secondary-text);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* --- Intro Section --- */
+    .intro {
+      padding: 4rem 5%;
+      max-width: 900px;
+    }
+
+    .intro p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* --- The Grid (Projects) --- */
+    .grid-section {
+      padding: 0 5% 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 4px solid var(--text-color);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* MIT Media Lab Style Cards */
+    .card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease;
+    }
+
+    /* Text overlay on image */
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+      color: white;
+      transform: translateY(0);
+      transition: all 0.3s;
+    }
+
+    .card-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    /* --- CV Section --- */
+    .cv-container {
       background-color: #f9f9f9;
+      padding: 4rem 5%;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cv-column h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .cv-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .cv-item h4 {
+      margin: 0 0 5px 0;
+      font-size: 1rem;
+    }
+
+    .cv-meta {
+      font-size: 0.85rem;
+      color: var(--secondary-text);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .cv-desc {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .cv-desc ul {
+        padding-left: 1.2rem;
+        margin-top: 5px;
+    }
+
+    .skills-list span {
+      display: inline-block;
+      background: #e0e0e0;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 0 5px 5px 0;
+    }
+
+    /* --- Modal (Overlay) --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 3rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 1001;
+    }
+
+    .modal-content {
+      max-width: 800px;
+      margin: 80px auto 50px;
+      padding: 0 20px;
+    }
+
+    .modal-header-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      background-color: #eee;
+    }
+
+    .modal-eyebrow {
+      color: var(--accent-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .modal-title {
+      font-size: 2.5rem;
+      margin: 10px 0 20px;
+    }
+
+    .modal-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
       color: #333;
     }
-    header {
-      background-color: #2e7d32;
-      color: white;
-      padding: 2em 1em;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
-    header h2 {
-      margin: 0.3em 0 0.6em;
-      font-weight: 400;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 1em;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .left, .right {
-      padding: 1em;
-    }
-    .left {
-      flex: 1 1 25%;
-      background-color: #e0f2f1;
-      min-width: 280px;
-    }
-    .right {
-      flex: 1 1 70%;
-      min-width: 320px;
-    }
-    .section {
-      margin-bottom: 2em;
-    }
-    .section h3 {
-      border-bottom: 2px solid #2e7d32;
-      padding-bottom: 0.3em;
-      margin-bottom: 0.5em;
-      color: #2e7d32;
-    }
-    ul {
-      padding-left: 1em;
-    }
-    .skill-label {
-      background-color: #81c784;
-      color: white;
-      padding: 0.3em 0.6em;
-      margin: 0.2em;
+
+    .modal-link {
       display: inline-block;
-      border-radius: 5px;
-      font-size: 0.9em;
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background-color: var(--text-color);
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .contact a {
-      color: #2e7d32;
-      text-decoration: none;
+    
+    .modal-link:hover {
+        background-color: var(--accent-color);
+        color: white;
     }
-    .small-note {
-      font-size: 0.85em;
-      color: #555;
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cv-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-header-image {
+        height: 250px;
+      }
+      .modal-title {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Miguel Ureña Pliego</h1>
-  <h2>Civil Engineering Master Student & Research Assistant at UPM</h2>
+<!-- Navigation -->
+<nav>
+  <div class="nav-brand">
+    <h1>Miguel Ureña Pliego</h1>
+    <span>Visiting Researcher @ MIT Media Lab</span>
+  </div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#cv">Resume</a>
+    <a href="mailto:miguelup@mit.edu">Contact</a>
+  </div>
+</nav>
+
+<!-- Intro -->
+<header class="intro">
+  <p>I am a Civil Engineering master’s student and researcher specializing in big geospatial data for cities with a social justice focus. I create open-source, global tools to empower communities and enable bottom-up democratic planning.</p>
 </header>
 
-<div class="container">
-  <div class="left">
-    <div class="section">
-      <h3>About Me</h3>
-      <p>I’m a Civil Engineering master’s student and research assistant specializing in machine learning, geospatial data, and urban mobility. I use tech to build sustainable and inclusive cities through international collaborations.</p>
-    </div>
-    
-    <div class="section">
-      <h3>Personal Info</h3>
-      <p><strong>Pronouns:</strong> he/him<br>
-         <strong>Nationality:</strong> Spanish<br>
-         <strong>Age:</strong> 22</p>
-    </div>
+<!-- Projects Grid -->
+<section id="work" class="grid-section">
+  <div class="section-title">Projects & Publications</div>
+  <div class="project-grid" id="projectGrid">
+    <!-- Grid items will be injected by JavaScript -->
+  </div>
+</section>
 
-    <div class="section">
-      <h3>Specializations</h3>
-      <p>Civil Engineering, GIS, Sustainable Mobility, Machine Learning, Remote Sensing, Urban Studies</p>
-    </div>
-
-    <div class="section">
-      <h3>Tools</h3>
-      <div class="skills">
-        <span class="skill-label">Linux</span>
-        <span class="skill-label">Docker</span>
-        <span class="skill-label">Git</span>
-        <span class="skill-label">Python</span>
-        <span class="skill-label">HTML</span>
-        <span class="skill-label">CSS</span>
-        <span class="skill-label">JavaScript</span>
-        <span class="skill-label">QGIS</span>
-        <span class="skill-label">AutoCAD</span>
-        <span class="skill-label">Blender</span>
-        <span class="skill-label">LaTeX</span>
-        <span class="skill-label">Julia</span>
-        <span class="skill-label">Matlab</span>
-        <span class="skill-label">Octave</span>
+<!-- Compact CV Section -->
+<section id="cv" class="cv-container">
+  <div class="section-title" style="margin-bottom: 2rem;">Curriculum Vitae</div>
+  
+  <div class="cv-grid">
+    <!-- Left Column: Info & Education -->
+    <div class="cv-column">
+      <h3>Contact & Skills</h3>
+      <div class="cv-item">
+        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguelup@mit.edu</a><br>
+        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguel.urena@upm.es</a><br>
+        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguel.urena.pliego@gmail.com</a><br>
+        <strong>Links:</strong> <a href="https://github.com/MiguelUrenaPliego">GitHub</a> / <a href="https://www.linkedin.com/in/miguel-ureña-pliego">LinkedIn</a></p>
       </div>
-      <p class="small-note">ML: PyTorch, Lightning<br>Geodata: GeoPandas, Shapely, NetworkX</p>
+
+      <div class="cv-item">
+        <h4>Technical Tools</h4>
+        <div class="skills-list">
+          <span>Python</span> <span>PyTorch</span> <span>GeoPandas</span> <span>QGIS</span> <span>Docker</span> <span>Git</span> <span>Linux</span> <span>NetworkX</span> <span>Julia</span> <span>Matlab</span> <span>Supercomputing</span>
+        </div>
+      </div>
+
+      <h3>Education</h3>
+      <div class="cv-item">
+        <h4>MEng Civil Engineering</h4>
+        <span class="cv-meta">2024–2026 | UPM (Madrid) & FUAS (Frankfurt)</span>
+      </div>
+      <div class="cv-item">
+        <h4>BEng Civil Engineering</h4>
+        <span class="cv-meta">2020–2024 | UPM (Madrid) & TU Wien (Vienna)</span>
+        <p class="cv-desc">Specialization in Transportation Engineering and Urban Planning.</p>
+      </div>
+      
+      <h3>Awards</h3>
+      <div class="cv-item">
+        <ul style="padding-left: 1rem; margin:0; font-size:0.9rem;">
+          <li>UPM-MIT Research Grant (2025)</li>
+          <li>2nd Prize, III EELISA Scientific Competition (2025)</li>
+          <li>TYPSA Award for Best Academic Record (2025)</li>
+          <li>1st Prize, II EELISA Scientific Competition (2024)</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="section contact">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:miguel.urena@alumnos.upm.es">miguel.urena@upm.es</a></p>
-      <p>GitHub: <a href="https://github.com/MiguelUrenaPliego">MiguelUrenaPliego</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/miguel-ureña-pliego">miguel-ureña-pliego</a></p>
+    <!-- Right Column: Experience -->
+    <div class="cv-column">
+      <h3>Experience</h3>
+      
+      <div class="cv-item">
+        <h4>Visiting Researcher</h4>
+        <span class="cv-meta">MIT Media Lab (City Science) | Sep 2025 – Feb 2026</span>
+        <div class="cv-desc">
+          <ul>
+            <li>CityScoPy contributor: 15-min city analysis and access to opportunities worldwide.</li>
+            <li>Introducing empathy and local narratives in community engagement with generative AI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <h4>Research Internship (Planned)</h4>
+        <span class="cv-meta">Smart EFYL, Cameroon | Apr 2026</span>
+        <div class="cv-desc">
+          Pilot research project with UAS Frankfurt creating a new ZIP code system for Fotouni and Duala using image vision.
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <h4>Internship</h4>
+        <span class="cv-meta">Detektia | Jun 2025 – Aug 2025</span>
+        <div class="cv-desc">
+          INSAR for cities. Machine learning for time series analysis.
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <h4>Consultant</h4>
+        <span class="cv-meta">Fundación UCR | Jan 2025 – Mar 2025</span>
+        <div class="cv-desc">
+          Seismic exposure with remote sensing. Developed the SeismicBuildingExposure python package.
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <h4>Research Assistant</h4>
+        <span class="cv-meta">UPM Advanced Geomatics Group | Feb 2022 – Jul 2026</span>
+        <div class="cv-desc">
+          Transport modeling with Climate Action Observatory. Image vision models for urban imagery (with TU Wien). LLMs for seismic risk assessment (with ENSAM Paris).
+        </div>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <div class="right">
-    <div class="section">
-      <h3>Work Experience</h3>
-      <ul>
-        <li><strong>Research Assistant</strong> – UPM (2022–now)</li>
-        <li><strong>Consultant</strong> – Fundación UCR (2025)</li>
-        <li><strong>Internship</strong> – UPM (2021–2022)</li>
-        <li><strong>Private Tutor</strong> – Math (2018–2023)</li>
-        <li><strong>Musician</strong> – Drao Productions (2019–2020)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Projects</h3>
-      <ul>
-        <li><strong>SeismicBuildingExposure</strong> – <a href="https://github.com/GeomaticsCaminosUPM/SeismicBuildingExposure">GitHub</a></li>
-        <li><strong>UrbanAccessAnalyzer</strong> – <a href="https://github.com/GeomaticsCaminosUPM/UrbanAccessAnalyzer">GitHub</a></li>
-        <li><strong>pyGTFSHandler</strong> – <a href="https://github.com/GeomaticsCaminosUPM/pyGTFSHandler">GitHub</a></li>
-        <li><strong>GeoVisionDataset</strong> – <a href="https://github.com/GeomaticsCaminosUPM/GeoVisionDataset">GitHub</a></li>
-        <li><strong>Maths in Dance</strong> – <a href="https://www.youtube.com/watch?v=f880R1TOdsU">YouTube</a></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Education</h3>
-      <ul>
-        <li>MEng Civil Engineering – UPM (2024–)</li>
-        <li>BEng Civil Engineering – TU Wien (2023–24, Erasmus)</li>
-        <li>BEng Civil Engineering – UPM (2020–24)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Publications</h3>
-      <ul>
-        <li><em>Transport-Related Surface Detection</em> – <a href="https://www.sciencedirect.com/science/article/abs/pii/S2352938525000564">Elsevier</a></li>
-        <li><em>Carbon Integrity Index</em> – <a href="https://observatorioaccionclimatica.org/inicio/informes">Observatorio</a></li>
-        <li><em>Nuevo arco tranviario</em> – <a href="https://oa.upm.es/83852/">Bachelor Thesis</a></li>
-        <li><em>Building Height Estimation</em> – <a href="https://oa.upm.es/83845/">UPM</a></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Awards & Grants</h3>
-      <ul>
-        <li>TYPSA Award – Best Academic Record</li>
-        <li>1st Prize – EELISA Student Competition (2025)</li>
-        <li>Excellence Grants – Community of Madrid</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>Conferences</h3>
-      <ul>
-        <li>DTE-AICOMAS25 – Paris</li>
-        <li>EELISA Scientific Competition – Budapest</li>
-        <li>EELISA Int. Conference – Bucharest</li>
-        <li>CIVAE 2022 – Spain</li>
-      </ul>
-    </div>
+<!-- Modal Overlay -->
+<div id="projectModal" class="modal-overlay">
+  <div class="modal-close" onclick="closeModal()">&times;</div>
+  <div class="modal-content">
+    <img src="" alt="" id="modalImg" class="modal-header-image">
+    <div id="modalEyebrow" class="modal-eyebrow"></div>
+    <h2 id="modalTitle" class="modal-title"></h2>
+    <div id="modalText" class="modal-text"></div>
+    <a href="#" id="modalLink" class="modal-link" target="_blank">View Project</a>
   </div>
 </div>
 
+<script>
+  // --- DATA SOURCE ---
+  // REPLACE "https://placehold.co/600x600/..." with your actual image paths (e.g., "images/synthetic.jpg")
+  const projectsData = [
+    // PROJECTS
+    {
+      id: 1,
+      type: "Project",
+      year: "2025",
+      title: "Synthetic Cityzens",
+      desc: "Generative AI and LLMs supporting community-driven planning through personalized, image-based narratives.",
+      img: "https://placehold.co/600x600/222/fff?text=Synthetic+Cityzens", 
+      link: "https://www.media.mit.edu/projects/city-science-lab-san-francisco/overview/"
+    },
+    {
+      id: 2,
+      type: "Project",
+      year: "2025",
+      title: "pyGTFSHandler & UrbanAccess",
+      desc: "Fast GTFS public transport timetable download and processing in python. Fast geo-graph processing for accessibility to urban services with open data.",
+      img: "https://placehold.co/600x600/2e7d32/fff?text=Urban+Access",
+      link: "https://github.com/CityScope/UrbanAccessAnalyzer"
+    },
+    {
+      id: 3,
+      type: "Project",
+      year: "2024",
+      title: "SeismicBuildingExposure",
+      desc: "A Python package to extract seismic exposure building attributes directly from satellite imagery using remote sensing techniques.",
+      img: "https://placehold.co/600x600/333/fff?text=Seismic+Exposure",
+      link: "https://github.com/GeomaticsCaminosUPM/SeismicBuildingExposure"
+    },
+    {
+      id: 4,
+      type: "Project",
+      year: "2023",
+      title: "GeoVisionDataset",
+      desc: "Creating Image vision AI datasets and fine-tuning models using geospatial open data for urban analysis.",
+      img: "https://placehold.co/600x600/444/fff?text=GeoVision",
+      link: "https://github.com/GeomaticsCaminosUPM/GeoVisionDataset"
+    },
+    {
+      id: 5,
+      type: "Project",
+      year: "2022",
+      title: "Maths in Dance",
+      desc: "Creation of an educational show mixing mathematics and dance to visualize geometric concepts through movement.",
+      img: "https://placehold.co/600x600/555/fff?text=Maths+In+Dance",
+      link: "#" // Link was incomplete in prompt
+    },
+    
+    // PUBLICATIONS (Treated visually as projects)
+    {
+      id: 6,
+      type: "Publication",
+      year: "Planned",
+      title: "Global Transport Quality Map",
+      desc: "Worldwide public transport coverage quality map generated using open GTFS feeds and OpenStreetMap data. Developed during MIT research stay.",
+      img: "https://placehold.co/600x600/111/fff?text=Global+Map",
+      link: "#"
+    },
+    {
+      id: 7,
+      type: "Publication",
+      year: "Planned",
+      title: "Humanized ABM with LLMs",
+      desc: "Integrating local narratives and empathy into Agent-Based Models for community engagement processes in San Francisco using generative AI.",
+      img: "https://placehold.co/600x600/222/fff?text=Human+ABM",
+      link: "#"
+    },
+    {
+      id: 8,
+      type: "Publication",
+      year: "Planned",
+      title: "Seismic ML Classifier",
+      desc: "Seismic building structural system machine learning classifier with transfer learning. A collaboration with ENSAM (Paris).",
+      img: "https://placehold.co/600x600/333/fff?text=Seismic+ML",
+      link: "#"
+    },
+    {
+      id: 9,
+      type: "Publication",
+      year: "2025",
+      title: "Automated Seismic Estimation",
+      desc: "A Methodology for the Automated Estimation of Seismic Behaviour Modifiers from Building Footprints. Main author. Under revision at Elsevier.",
+      img: "https://placehold.co/600x600/444/fff?text=Methodology",
+      link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5419010"
+    },
+    {
+      id: 10,
+      type: "Publication",
+      year: "2025",
+      title: "Transport Surface Detection",
+      desc: "Transport-Related Surface Detection with Machine Learning: Analyzing Temporal Trends in Madrid and Vienna. Published in Elsevier Remote Sensing Applications.",
+      img: "https://placehold.co/600x600/2e7d32/fff?text=Surfaces",
+      link: "https://www.sciencedirect.com/science/article/abs/pii/S2352938525000564"
+    },
+    {
+      id: 11,
+      type: "Publication",
+      year: "2024",
+      title: "Carbon Integrity Index",
+      desc: "Technical report of the Climate Action Observatory in 7 Spanish cities. Co-authored the mobility section of the resport.",
+      img: "https://placehold.co/600x600/666/fff?text=Carbon+Index",
+      link: "https://observatorioaccionclimatica.org/inicio/informes"
+    },
+    {
+      id: 12,
+      type: "Publication",
+      year: "2024",
+      title: "New Tram for Madrid",
+      desc: "Bachelor thesis: New tram system proposal and construction project for the south of Madrid (Colonia Jardín - Asamblea). Inspired by the concept of the semicurcular tramline T3 of Paris I proposed in my Bachelor Thesis (a civil engineering contrcutctions project) the construction of a Tram system that connects all the poor eastern and southern neighborhoods of Madrid between them to solve the issue of the radial metro system with a cheaper system suitable for less demanded routes. I explore the potential of trams to transform the streetscape reducing space for cars and creating new green space and bike lanes. This transpformation potential not seen in other trnasport modes like the subway make it even more important for areas of the city long forgotten by the city council.",
+      img: "https://placehold.co/600x600/777/fff?text=Tram+Project",
+      link: "https://oa.upm.es/83852/"
+    },
+    {
+      id: 13,
+      type: "Publication",
+      year: "2023",
+      title: "Safe(r) LGBTQ+ Spaces",
+      desc: "This is the resulting article of a course I took at TU Wien at the Interdisciplinary Centre for Urban Culture and Public Space with an antropologyst. Here I learned how to apply qualitative techiniques to research about urban fenomena. This article is written together with two other people: Gréta Semancová and Theresa Korn. We explored how the LGBTIQ+ community creates safe spaces in cities, how the community concentrates in bigger cities and the differences between different parts of the community, especially between men and the rest. One interesting and complicated aspect of the article is that it openly talks about sex and other ways of building sexual relations in a nontraditional way that happen in the community. A very difficult topic to research. Exploring Safe(r) Spaces for the LGBTQ+ Community in Graz. Everyday Life & Intersectionality. Annual Reader 2023, TU Wien.",
+      img: "https://placehold.co/600x600/888/fff?text=Urban+Culture",
+      link: "https://skuor.tuwien.ac.at/wp-content/uploads/2025/02/final-version_reader-2025.pdf"
+    },
+    {
+      id: 14,
+      type: "Publication",
+      year: "2023",
+      title: "Building Height Estimation",
+      desc: "Automatic Building Height Estimation: Machine Learning Models for Urban Image Analysis. Published in MDPI Applied Sciences (Q2 Engineering).",
+      img: "https://placehold.co/600x600/999/fff?text=Height+ML",
+      link: "https://oa.upm.es/83845/"
+    },
+    // {
+    //   id: ,
+    //   type: Music,
+    //   year: 2020
+    //   title: "Music for the short film Jean",
+    //   desc: "Composed the music for a short film...",
+    //   img: "images/jean.jpg", 
+    //   link: "https://www.youtube.com/watch?v=Il-dA8WoSqo" add preview
+    // },
+    // {
+    //   id: ,
+    //   type: ,
+    //   year: 2022
+    //   title: "Logistics industry plan",
+    //   desc: "For the Madrid State presented by the main opposition party elections I was responsible for the creation of an industry plan for the east of Madrid. I met the main stakeholders and company leaders in the region over 30 people, attended over 10 high end meetings at the Madrid State Parliment and wrote the plan. It was very uncommon to have a 20 year old person attending this kind of meetings and being responsible for an important part of the political program of the organization. Even though this never became a reality this gave me hands own experience in how political agreements can be made. Change has to be decided at a political level and having experience there is very valuable. More info about the proposal I made: Este polo tiene como objetivo promover la adaptación del sector de la logística en la Comunidad de Madrid beneficiando a empresas y usuarios desde una perspectiva ecológica. Mediante este polo, se creará una autoridad logística en la Comunidad de Madrid, que apoye a optimizar las operaciones de las empresas del sector, la creación de infraestructuras para el reparto de mercancías, la creación de una red de microhubs de reparto y la adaptación de flotas. Este polo se desarrollará en el Corredor del Henares. ",
+    //   img: "images/polo_industrial.jpg", 
+    //   link: "https://masmadrid.org/mas-madrid-presenta-el-plan-reindustria-siete-polos-de-desarrollo-para-articular-la-politica-industrial-de-la-comunidad-de-madrid/" 
+    // }
+  ];
+
+  // --- RENDER GRID ---
+  const gridContainer = document.getElementById('projectGrid');
+
+  function renderGrid() {
+    gridContainer.innerHTML = '';
+    projectsData.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.onclick = () => openModal(item.id);
+      
+      // We use the image as background or img tag. Img tag handles object-fit well.
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.title}" loading="lazy">
+        <div class="card-content">
+          <span class="card-eyebrow">${item.year} &mdash; ${item.type}</span>
+          <h3 class="card-title">${item.title}</h3>
+        </div>
+      `;
+      gridContainer.appendChild(card);
+    });
+  }
+
+  // --- MODAL LOGIC ---
+  const modal = document.getElementById('projectModal');
+  const mImg = document.getElementById('modalImg');
+  const mEyebrow = document.getElementById('modalEyebrow');
+  const mTitle = document.getElementById('modalTitle');
+  const mText = document.getElementById('modalText');
+  const mLink = document.getElementById('modalLink');
+
+  function openModal(id) {
+    const item = projectsData.find(p => p.id === id);
+    if(!item) return;
+
+    mImg.src = item.img;
+    mEyebrow.textContent = `${item.year} | ${item.type}`;
+    mTitle.textContent = item.title;
+    mText.textContent = item.desc;
+    
+    if(item.link && item.link !== "#") {
+        mLink.style.display = 'inline-block';
+        mLink.href = item.link;
+    } else {
+        mLink.style.display = 'none';
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal if clicking outside content
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) closeModal();
+  });
+
+  // Init
+  renderGrid();
+
+</script>
 </body>
 </html>
