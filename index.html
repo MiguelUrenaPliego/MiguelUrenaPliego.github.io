@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Miguel Ureña Pliego | Portfolio & CV</title>
-  <!-- Google Fonts: Raleway and Roboto (Common in academic/tech portfolios) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,18 +13,19 @@
     :root {
       --bg-color: #ffffff;
       --text-color: #111111;
-      --accent-color: #2e7d32; /* Keeping your green identity */
+      /* Pink Palette */
+      --accent-color: #D81B60; 
+      --accent-hover: #ad1457;
       --secondary-text: #666666;
       --border-color: #e0e0e0;
-      --card-overlay: rgba(0, 0, 0, 0.6);
+      --tag-bg: #fce4ec; 
+      --tag-text: #880e4f;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      font-family: 'Roboto', sans-serif; /* Clean body text */
+      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
       background-color: var(--bg-color);
@@ -44,9 +45,7 @@
       transition: color 0.2s;
     }
 
-    a:hover {
-      color: var(--accent-color);
-    }
+    a:hover { color: var(--accent-color); }
 
     /* --- Navigation --- */
     nav {
@@ -57,12 +56,7 @@
       border-bottom: 1px solid transparent;
     }
 
-    .nav-brand h1 {
-      font-size: 1.5rem;
-      margin: 0;
-      line-height: 1.2;
-    }
-
+    .nav-brand h1 { font-size: 1.5rem; margin: 0; line-height: 1.2; }
     .nav-brand span {
       display: block;
       font-size: 0.9rem;
@@ -83,23 +77,41 @@
     /* --- Intro Section --- */
     .intro {
       padding: 4rem 5%;
-      max-width: 900px;
+      max-width: 1100px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
     }
 
-    .intro p {
+    .intro-text p {
       font-size: 1.2rem;
       font-weight: 300;
+      color: #333;
+      margin: 0;
+    }
+    
+    .intro-text strong { color: var(--accent-color); }
+
+    .profile-img-container {
+      flex-shrink: 0;
     }
 
-    /* --- The Grid (Projects) --- */
-    .grid-section {
-      padding: 0 5% 4rem;
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+    /* --- Grid Section --- */
+    .grid-section { padding: 0 5% 4rem; }
 
     .section-title {
       font-size: 2rem;
       margin-bottom: 1.5rem;
-      border-bottom: 4px solid var(--text-color);
+      border-bottom: 4px solid var(--accent-color);
       display: inline-block;
       padding-bottom: 5px;
     }
@@ -110,7 +122,7 @@
       gap: 20px;
     }
 
-    /* MIT Media Lab Style Cards */
+    /* --- Cards --- */
     .card {
       position: relative;
       aspect-ratio: 1 / 1;
@@ -120,9 +132,7 @@
       transition: transform 0.3s ease;
     }
 
-    .card:hover {
-      transform: scale(1.02);
-    }
+    .card:hover { transform: scale(1.02); }
 
     .card img {
       width: 100%;
@@ -131,39 +141,39 @@
       transition: filter 0.3s ease;
     }
 
-    /* Text overlay on image */
+    /* UPDATED SHADOW FOR READABILITY */
     .card-content {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 20px;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+      padding: 25px 20px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0) 100%);
       color: white;
-      transform: translateY(0);
-      transition: all 0.3s;
     }
 
-    .card-eyebrow {
+    .card-meta {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      opacity: 0.8;
+      opacity: 0.9;
       margin-bottom: 5px;
       display: block;
+      color: #ffdce8; /* Light pinkish white for meta text */
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
       margin: 0;
       line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     /* --- CV Section --- */
     .cv-container {
-      background-color: #f9f9f9;
+      background-color: #fff0f5; 
       padding: 4rem 5%;
       border-top: 1px solid var(--border-color);
     }
@@ -185,70 +195,78 @@
       padding-bottom: 10px;
     }
 
-    .cv-item {
-      margin-bottom: 1.5rem;
+    .cv-item { margin-bottom: 1.5rem; }
+    .cv-item h4 { margin: 0 0 5px 0; font-size: 1rem; display: flex; align-items: center; }
+    
+    .cv-link-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+        background-color: white;
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        border-radius: 50%;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
     }
-
-    .cv-item h4 {
-      margin: 0 0 5px 0;
-      font-size: 1rem;
-    }
-
-    .cv-meta {
-      font-size: 0.85rem;
-      color: var(--secondary-text);
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    .cv-desc {
-      font-size: 0.9rem;
-      margin: 0;
+    .cv-link-icon:hover {
+        background-color: var(--accent-color);
+        color: white;
     }
     
-    .cv-desc ul {
-        padding-left: 1.2rem;
-        margin-top: 5px;
+    .text-link {
+        color: var(--accent-color);
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: underline;
     }
+
+    .cv-meta { font-size: 0.85rem; color: var(--secondary-text); display: block; margin-bottom: 5px; }
+    .cv-desc { font-size: 0.9rem; margin: 0; }
+    .cv-desc ul { padding-left: 1.2rem; margin-top: 5px; }
 
     .skills-list span {
       display: inline-block;
-      background: #e0e0e0;
+      background: white;
+      border: 1px solid #e0e0e0;
       padding: 4px 8px;
       border-radius: 4px;
       font-size: 0.8rem;
       margin: 0 5px 5px 0;
+      color: var(--accent-color);
+      font-weight: 500;
     }
 
-    /* --- Modal (Overlay) --- */
+    /* --- Modal --- */
     .modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(255, 255, 255, 0.98);
       z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0; visibility: hidden;
       transition: opacity 0.3s ease;
       overflow-y: auto;
     }
 
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
 
     .modal-close {
       position: fixed;
-      top: 20px;
-      right: 30px;
+      top: 20px; right: 30px;
       font-size: 3rem;
       cursor: pointer;
       line-height: 1;
       z-index: 1001;
+      color: var(--text-color);
+      transition: color 0.2s;
     }
+    .modal-close:hover { color: var(--accent-color); }
 
     .modal-content {
       max-width: 800px;
@@ -264,16 +282,61 @@
       background-color: #eee;
     }
 
-    .modal-eyebrow {
-      color: var(--accent-color);
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.9rem;
+    .modal-tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
 
-    .modal-title {
-      font-size: 2.5rem;
-      margin: 10px 0 20px;
+    .modal-tag {
+      background-color: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 4px;
+    }
+
+    .modal-meta-year {
+      color: var(--secondary-text);
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .modal-title { font-size: 2.5rem; margin: 10px 0 10px; line-height: 1.1; }
+    
+    .modal-institutions {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .modal-institutions h5 {
+        margin: 0 0 5px 0;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--secondary-text);
+    }
+    .modal-institutions ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .modal-institutions li {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+    .modal-institutions li::before {
+        content: "•";
+        color: var(--accent-color);
+        margin-right: 5px;
     }
 
     .modal-text {
@@ -281,34 +344,137 @@
       line-height: 1.8;
       color: #333;
     }
+    
+    .modal-text h3 { margin-top: 2rem; color: var(--accent-color); }
+    .modal-text p { margin-bottom: 1.5rem; }
+    .modal-text ul { margin-bottom: 1.5rem; }
+    
+    /* MODAL LINKS STYLE - More obvious */
+    .modal-text a {
+        color: var(--accent-color);
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s, opacity 0.2s;
+    }
+    .modal-text a:hover {
+        opacity: 0.8;
+        color: var(--accent-hover);
+    }
+    
+    .modal-text img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .modal-text img.small-centered {
+        max-width: 60%;
+        display: block;
+        margin: 1rem auto;
+    }
+    
+    /* MAP PLACEHOLDER STYLES - Fixes Blocking Issue */
+    .map-placeholder {
+        margin: 20px 0;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 40px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        border-radius: 4px;
+    }
+    
+    .map-placeholder h4 {
+        margin: 0;
+        color: #333;
+    }
+
+    .load-map-btn {
+        padding: 12px 24px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.1s;
+    }
+    
+    .load-map-btn:hover {
+        background-color: var(--accent-hover);
+    }
+    
+    .load-map-btn:active {
+        transform: scale(0.98);
+    }
 
     .modal-link {
       display: inline-block;
       margin-top: 2rem;
-      padding: 10px 20px;
-      background-color: var(--text-color);
+      padding: 12px 24px;
+      background-color: var(--accent-color);
       color: white;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 1px;
+      border: 1px solid var(--accent-color);
+      transition: all 0.2s;
     }
     
     .modal-link:hover {
-        background-color: var(--accent-color);
-        color: white;
+        background-color: white;
+        color: var(--accent-color);
+    }
+
+    /* Related Projects Section in Modal */
+    .related-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+    .related-title {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        color: var(--secondary-text);
+    }
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .related-card {
+        cursor: pointer;
+        background: #f9f9f9;
+        transition: transform 0.2s;
+    }
+    .related-card:hover { transform: translateY(-3px); }
+    .related-card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+    .related-card h6 {
+        margin: 8px 10px;
+        font-size: 0.9rem;
+        color: var(--text-color);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .cv-grid {
-        grid-template-columns: 1fr;
-      }
-      .modal-header-image {
-        height: 250px;
-      }
-      .modal-title {
-        font-size: 1.8rem;
-      }
+      .intro { flex-direction: column-reverse; text-align: center; }
+      .cv-grid { grid-template-columns: 1fr; }
+      .modal-header-image { height: 250px; }
+      .modal-title { font-size: 1.8rem; }
+      .modal-text img.small-centered { max-width: 100%; }
     }
   </style>
 </head>
@@ -329,14 +495,21 @@
 
 <!-- Intro -->
 <header class="intro">
-  <p>I am a Civil Engineering master’s student and researcher specializing in big geospatial data for cities with a social justice focus. I create open-source, global tools to empower communities and enable bottom-up democratic planning.</p>
+  <div class="intro-text">
+    <p>
+      I am a Visiting Student at the <strong>MIT Media Lab (City Science)</strong> and a Civil Engineering Master’s student at the Technical University of Madrid. I operate at the intersection of urbanism, engineering, artificial intelligence and computer science. My work focuses on developing scalable computational frameworks to measure global accessibility and creating generative AI tools for participatory, bottom-up democratic planning. I aim to bridge the gap between rigorous urban analytics and the lived, human experience of cities.
+    </p>
+  </div>
+  <div class="profile-img-container">
+    <img src="images/foto_Miguel.jpg" alt="Miguel Ureña Pliego" class="profile-img">
+  </div>
 </header>
 
 <!-- Projects Grid -->
 <section id="work" class="grid-section">
   <div class="section-title">Projects & Publications</div>
   <div class="project-grid" id="projectGrid">
-    <!-- Grid items will be injected by JavaScript -->
+    <!-- Grid items injected by JS -->
   </div>
 </section>
 
@@ -349,10 +522,11 @@
     <div class="cv-column">
       <h3>Contact & Skills</h3>
       <div class="cv-item">
-        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguelup@mit.edu</a><br>
-        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguel.urena@upm.es</a><br>
-        <p><strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguel.urena.pliego@gmail.com</a><br>
-        <strong>Links:</strong> <a href="https://github.com/MiguelUrenaPliego">GitHub</a> / <a href="https://www.linkedin.com/in/miguel-ureña-pliego">LinkedIn</a></p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:miguelup@mit.edu">miguelup@mit.edu</a><br>
+          <strong>Alt:</strong> <a href="mailto:miguel.urena@upm.es">miguel.urena@upm.es</a><br>
+          <strong>Links:</strong> <a href="https://github.com/MiguelUrenaPliego">GitHub</a> / <a href="https://www.linkedin.com/in/miguel-ureña-pliego">LinkedIn</a>
+        </p>
       </div>
 
       <div class="cv-item">
@@ -371,17 +545,30 @@
         <h4>BEng Civil Engineering</h4>
         <span class="cv-meta">2020–2024 | UPM (Madrid) & TU Wien (Vienna)</span>
         <p class="cv-desc">Specialization in Transportation Engineering and Urban Planning.</p>
+        <!-- FIXED: Thesis Link now points to ID 18 (Tram) -->
+        <a onclick="openModal(18)" class="cv-link-icon" title="View Thesis Project">🔗</a>
       </div>
       
       <h3>Awards</h3>
       <div class="cv-item">
         <ul style="padding-left: 1rem; margin:0; font-size:0.9rem;">
           <li>UPM-MIT Research Grant (2025)</li>
-          <li>2nd Prize, III EELISA Scientific Competition (2025)</li>
+          <li>2nd Prize, III EELISA Scientific Competition (2025) <a onclick="openModal(11)" class="cv-link-icon" title="Related Project" style="width:16px;height:16px;font-size:10px;">🔗</a></li>
           <li>TYPSA Award for Best Academic Record (2025)</li>
-          <li>1st Prize, II EELISA Scientific Competition (2024)</li>
+          <li>1st Prize, II EELISA Scientific Competition (2024) <a onclick="openModal(9)" class="cv-link-icon" title="Related Project" style="width:16px;height:16px;font-size:10px;">🔗</a></li>
         </ul>
       </div>
+
+      <!-- Languages Section -->
+      <h3>Languages</h3>
+      <div class="cv-item">
+          <p class="cv-desc" style="line-height: 1.8;">
+            <strong>Spanish:</strong> Native<br>
+            <strong>English:</strong> Fluent (C1) — TOEFL 107/120<br>
+            <strong>German:</strong> Fluent (C1) — EOI Certificate
+          </p>
+      </div>
+
     </div>
 
     <!-- Right Column: Experience -->
@@ -389,45 +576,61 @@
       <h3>Experience</h3>
       
       <div class="cv-item">
-        <h4>Visiting Researcher</h4>
+        <h4>
+            Visiting Researcher 
+            <a onclick="openModal(2)" class="cv-link-icon" title="See 'Synthetic Cityzens'">🔗</a>
+        </h4>
         <span class="cv-meta">MIT Media Lab (City Science) | Sep 2025 – Feb 2026</span>
         <div class="cv-desc">
           <ul>
-            <li>CityScoPy contributor: 15-min city analysis and access to opportunities worldwide.</li>
-            <li>Introducing empathy and local narratives in community engagement with generative AI.</li>
+            <li>Developing "Synthetic Cityzens": AI agents for participatory urban planning. <span class="text-link" onclick="openModal(2)">See Project</span></li>
+            <li>Created global accessibility frameworks using OpenStreetMap and GTFS. <span class="text-link" onclick="openModal(3)">See Project</span></li>
           </ul>
         </div>
       </div>
 
       <div class="cv-item">
-        <h4>Research Internship (Planned)</h4>
+        <h4>
+            Research Internship (Planned)
+            <a onclick="openModal(1)" class="cv-link-icon" title="See 'Micromobility in Cameroon'">🔗</a>
+        </h4>
         <span class="cv-meta">Smart EFYL, Cameroon | Apr 2026</span>
         <div class="cv-desc">
-          Pilot research project with UAS Frankfurt creating a new ZIP code system for Fotouni and Duala using image vision.
+          Pilot research project with UAS Frankfurt creating a new ZIP code system for Fotouni and Duala using computer vision and micromobility solutions. <span class="text-link" onclick="openModal(1)">See Project</span>
         </div>
       </div>
 
       <div class="cv-item">
-        <h4>Internship</h4>
+        <h4>
+            Internship
+            <a onclick="openModal(6)" class="cv-link-icon" title="See 'INSAR OPERA'">🔗</a>
+        </h4>
         <span class="cv-meta">Detektia | Jun 2025 – Aug 2025</span>
         <div class="cv-desc">
-          INSAR for cities. Machine learning for time series analysis.
+          InSAR for cities. Integration of NASA's OPERA product into infrastructure monitoring pipelines. <span class="text-link" onclick="openModal(6)">See Project</span>
         </div>
       </div>
 
       <div class="cv-item">
-        <h4>Consultant</h4>
+        <h4>
+            Consultant
+            <!-- FIXED: Linked to ID 19 (Seismic Code) -->
+            <a onclick="openModal(19)" class="cv-link-icon" title="See 'SeismicBuildingExposure'">🔗</a>
+        </h4>
         <span class="cv-meta">Fundación UCR | Jan 2025 – Mar 2025</span>
         <div class="cv-desc">
-          Seismic exposure with remote sensing. Developed the SeismicBuildingExposure python package.
+          Seismic exposure analysis with remote sensing. Developed the <em>SeismicBuildingExposure</em> python package.
         </div>
       </div>
 
       <div class="cv-item">
-        <h4>Research Assistant</h4>
+        <h4>
+            Research Assistant
+            <a onclick="openModal(13)" class="cv-link-icon" title="See 'Building Height Estimation'">🔗</a>
+        </h4>
         <span class="cv-meta">UPM Advanced Geomatics Group | Feb 2022 – Jul 2026</span>
         <div class="cv-desc">
-          Transport modeling with Climate Action Observatory. Image vision models for urban imagery (with TU Wien). LLMs for seismic risk assessment (with ENSAM Paris).
+          Transport modeling with Climate Action Observatory (<span class="text-link" onclick="openModal(10)">See Project</span>). Developed computer vision models for urban imagery (<span class="text-link" onclick="openModal(9)">See Project</span>). LLMs for seismic risk assessment (<span class="text-link" onclick="openModal(11)">See Project</span>).
         </div>
       </div>
 
@@ -437,167 +640,380 @@
 
 <!-- Modal Overlay -->
 <div id="projectModal" class="modal-overlay">
-  <div class="modal-close" onclick="closeModal()">&times;</div>
+  <div class="modal-close" onclick="requestClose()">&times;</div>
+  
   <div class="modal-content">
     <img src="" alt="" id="modalImg" class="modal-header-image">
-    <div id="modalEyebrow" class="modal-eyebrow"></div>
+    <div id="modalTags" class="modal-tags"></div>
+    <span id="modalYear" class="modal-meta-year"></span>
     <h2 id="modalTitle" class="modal-title"></h2>
+    
+    <!-- Institution Section -->
+    <div id="modalInstitutions" class="modal-institutions" style="display:none;">
+        <h5>Institutions</h5>
+        <ul id="modalInstitutionsList"></ul>
+    </div>
+
+    <!-- Main Text -->
     <div id="modalText" class="modal-text"></div>
     <a href="#" id="modalLink" class="modal-link" target="_blank">View Project</a>
+
+    <!-- Related Projects Section -->
+    <div id="modalRelated" class="related-section" style="display: none;">
+        <h4 class="related-title">Related Projects</h4>
+        <div id="relatedGrid" class="related-grid"></div>
+    </div>
+
   </div>
 </div>
 
 <script>
+  // --- HELPER FUNCTION: Load Map on Click ---
+  // This prevents the page from blocking by only loading heavy iframes when requested.
+  function loadMap(btn, src) {
+      const container = btn.parentElement;
+      container.innerHTML = '<div style="padding:40px; text-align:center;">Loading Interactive Map...</div>';
+      
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.style.width = "100%";
+      iframe.style.height = "400px";
+      iframe.style.border = "none";
+      iframe.onload = function() {
+          // Remove any loading text if needed, or replace content
+      };
+      
+      // Use setTimeout to allow UI thread to breathe if rendering is heavy
+      setTimeout(() => {
+          container.innerHTML = '';
+          container.appendChild(iframe);
+      }, 50);
+  }
+
   // --- DATA SOURCE ---
-  // REPLACE "https://placehold.co/600x600/..." with your actual image paths (e.g., "images/synthetic.jpg")
   const projectsData = [
-    // PROJECTS
     {
       id: 1,
-      type: "Project",
-      year: "2025",
-      title: "Synthetic Cityzens",
-      desc: "Generative AI and LLMs supporting community-driven planning through personalized, image-based narratives.",
-      img: "https://placehold.co/600x600/222/fff?text=Synthetic+Cityzens", 
-      link: "https://www.media.mit.edu/projects/city-science-lab-san-francisco/overview/"
-    },
-    {
-      id: 2,
-      type: "Project",
-      year: "2025",
-      title: "pyGTFSHandler & UrbanAccess",
-      desc: "Fast GTFS public transport timetable download and processing in python. Fast geo-graph processing for accessibility to urban services with open data.",
-      img: "https://placehold.co/600x600/2e7d32/fff?text=Urban+Access",
-      link: "https://github.com/CityScope/UrbanAccessAnalyzer"
-    },
-    {
-      id: 3,
-      type: "Project",
-      year: "2024",
-      title: "SeismicBuildingExposure",
-      desc: "A Python package to extract seismic exposure building attributes directly from satellite imagery using remote sensing techniques.",
-      img: "https://placehold.co/600x600/333/fff?text=Seismic+Exposure",
-      link: "https://github.com/GeomaticsCaminosUPM/SeismicBuildingExposure"
-    },
-    {
-      id: 4,
-      type: "Project",
-      year: "2023",
-      title: "GeoVisionDataset",
-      desc: "Creating Image vision AI datasets and fine-tuning models using geospatial open data for urban analysis.",
-      img: "https://placehold.co/600x600/444/fff?text=GeoVision",
-      link: "https://github.com/GeomaticsCaminosUPM/GeoVisionDataset"
-    },
-    {
-      id: 5,
-      type: "Project",
-      year: "2022",
-      title: "Maths in Dance",
-      desc: "Creation of an educational show mixing mathematics and dance to visualize geometric concepts through movement.",
-      img: "https://placehold.co/600x600/555/fff?text=Maths+In+Dance",
-      link: "#" // Link was incomplete in prompt
-    },
-    
-    // PUBLICATIONS (Treated visually as projects)
-    {
-      id: 6,
-      type: "Publication",
-      year: "Planned",
-      title: "Global Transport Quality Map",
-      desc: "Worldwide public transport coverage quality map generated using open GTFS feeds and OpenStreetMap data. Developed during MIT research stay.",
-      img: "https://placehold.co/600x600/111/fff?text=Global+Map",
+      categories: ["Research", "Mobility", "GIS", "Community"],
+      year: "Planned (2026)",
+      title: "Micromobility in Cameroon",
+      institutions: ["Smart EFYL (Germany)", "University of Applied Sciences Frankfurt (Germany)", "MIT Media Lab City Science (USA)", "Technical University of Madrid (Spain)", "University of Douala (Cameroon)"],
+      related: [2, 15],
+      desc: `
+        <p><strong>Integrated shared mobility, Addressing, and Road Condition Mapping System in Cameroon.</strong></p>
+        <p>This pilot research project proposes a comprehensive, scalable framework for shared mobility and geospatial addressing. The initiative responds to three persistent challenges: the absence of formal address systems, inefficient last-mile delivery, and lack of road condition data. I am acting as the connecting link between the partner universities and the deploying companies.</p>
+
+        <h3>1. Digital Addressing System</h3>
+        <p>Accurate door-level referencing is essential for development. We are deploying a system based on "districts" and "street codes" rather than random words. We will utilize low-cost GNSS solutions (GeodNet, Custom Arduino RTK) and AI-assisted addressing algorithms that segment building footprints from drone imagery.</p>
+
+        <h3>2. Micrologistics & Marketplace</h3>
+        <p>A community-focused e-commerce platform supported by electrically assisted Basic Utility Vehicles (BUVs). These vehicles replace limited-load motorbikes and handcarts, enabling optimized last-mile delivery. The system records operational data (weight, speed, routes) to optimize logistics in real-time.</p>
+
+        <h3>3. Taxi-Hailing & Road Quality AI</h3>
+        <p>A mobile application enabling digital ride requests with dynamic pricing based on road conditions. We are developing a CNN model that classifies road quality (Good, Moderate, Poor) using synchronized GNSS and video data from drivers, helping municipal maintenance planning.</p>
+
+        <p><strong>Objective:</strong> The goal is to establish a transferable, capacity-building model. We are organizing workshops for local students on GNSS surveying, drone mapping, and AI model development to ensure the system is locally maintainable.</p>
+      `,
+      img: "images/address_plaque.jpg", 
       link: "#"
     },
     {
       id: 7,
-      type: "Publication",
-      year: "Planned",
-      title: "Humanized ABM with LLMs",
-      desc: "Integrating local narratives and empathy into Agent-Based Models for community engagement processes in San Francisco using generative AI.",
-      img: "https://placehold.co/600x600/222/fff?text=Human+ABM",
+      categories: ["Publication", "Engineering", "AI"],
+      year: "2026",
+      title: "Seismic ML Classifier",
+      institutions: ["Ecole Nationale Supérieure d’Arts et Métiers (France)", "Technical University of Madrid (Spain)"],
+      related: [11, 13],
+      desc: `
+        <p><strong>Machine Learning Classification of Structural Systems using Geospatial Attributes.</strong></p>
+        <p>An ongoing collaboration with ENSAM (Paris) to address the bottleneck of identifying structural materials (e.g., concrete vs. masonry) in large-scale risk assessments. This research presents a machine learning framework that infers structural systems based exclusively on remotely acquired geospatial attributes (footprint shape, position, height, roof material). Results will be published in 2026.</p>
+      `,
+      img: "images/seismic.jpg",
       link: "#"
     },
     {
-      id: 8,
-      type: "Publication",
-      year: "Planned",
-      title: "Seismic ML Classifier",
-      desc: "Seismic building structural system machine learning classifier with transfer learning. A collaboration with ENSAM (Paris).",
-      img: "https://placehold.co/600x600/333/fff?text=Seismic+ML",
+      id: 2,
+      categories: ["Research", "Community", "AI"],
+      year: "2025",
+      title: "Synthetic Cityzens",
+      institutions: ["MIT Media Lab City Science (USA)"],
+      related: [1, 3],
+      desc: `
+        <p><strong>Generative AI and LLMs supporting community-driven planning through personalized narratives.</strong></p>
+        <p>Traditional urban planning faces a participation crisis: less than 10% of residents meaningfully influence decisions. "Synthetic Cityzens" is a platform developed at the MIT Media Lab that creates AI agents—based on demographic data and ethnographic interviews—that can "walk through" and evaluate proposed urban changes.</p>
+        <p><strong>My Role:</strong> I am assisting PhD researcher Leticia Izquierdo in the technical development of these agents and the validation framework. I am responsible for creating the simulation environments where these agents operate.</p>
+        <p>Our upcoming study aims to validate whether these LLM-based agents accurately reproduce human behavior. We plan to test synthetic agents across decision points using Google Street View and the "Street Score" dataset to see if their preferences align with human behavior on metrics like safety and liveliness. This introduces <em>embodied rehearsal</em>: allowing planners to spot friction points that abstract planning misses.</p>
+      `,
+      img: "images/ai_street.jpg", 
+      link: "https://www.media.mit.edu/projects/city-science-lab-san-francisco/overview/"
+    },
+    {
+      id: 3,
+      categories: ["Research", "Mobility", "GIS"],
+      year: "2025",
+      title: "Global Transport Quality Map",
+      institutions: ["MIT Media Lab City Science (USA)", "Technical University of Madrid (Spain)"],
+      related: [4, 5, 10],
+      desc: `
+        <p><strong>Mapping the quality of access to opportunity worldwide.</strong></p>
+        <p>A planned publication and web platform that visualizes public transport coverage quality at a street and fine-grid level globally. By combining <em>pyGTFSHandler</em> and <em>UrbanAccessAnalyzer</em>, this project moves beyond simple "distance to station" metrics to measure the frequency, speed, and connectivity of transit systems.</p>
+        <p>This work aims to provide a comparable baseline for transit equity, helping cities in the Global South and North understand their infrastructure gaps through open data.</p>
+        
+        <div class="map-placeholder">
+            <h4>Transit Quality: Donostia, Spain</h4>
+            <button class="load-map-btn" onclick="loadMap(this, 'maps/level_of_service_donostia.html')">Load Interactive Map</button>
+        </div>
+
+        <div class="map-placeholder">
+            <h4>Population Coverage: Donostia, Spain</h4>
+            <button class="load-map-btn" onclick="loadMap(this, 'maps/population_donostia.html')">Load Interactive Map</button>
+        </div>
+      `,
+      img: "images/ls_population_donostia.jpg",
+      link: "#"
+    },
+    {
+      id: 4,
+      categories: ["Code", "Mobility"],
+      year: "2025",
+      title: "pyGTFSHandler",
+      institutions: ["MIT Media Lab City Science (USA)", "Technical University of Madrid (Spain)"],
+      related: [3, 5],
+      desc: `
+        <p><strong>A robust Python framework for analyzing global transit data.</strong></p>
+        <p>Transit is often measured using oversimplified models that fail to capture the reality of service quality. <em>pyGTFSHandler</em> is a comprehensive Python package I developed to download, clean, and analyze General Transit Feed Specification (GTFS) data from the MobilityDatabase API. It addresses common errors found in raw feeds and provides advanced metrics for urban analysis.</p>
+        <p>Key features include:</p>
+        <ul>
+            <li><strong>Service Intensity:</strong> Calculates the volume of service offered over specific date ranges.</li>
+            <li><strong>Advanced Headway Calculation:</strong> Implements a new algorithm to realistically aggregate the effects of multiple lines stopping at the same location.</li>
+            <li><strong>Speed Analysis:</strong> Computes commercial speeds for individual lines, stops and network segments.</li>
+        </ul>
+        
+        <div class="map-placeholder">
+            <h4>Mean Interval: Cambridge, MA</h4>
+            <button class="load-map-btn" onclick="loadMap(this, 'maps/mean_interval.html')">Load Interactive Map</button>
+        </div>
+        
+        <div class="map-placeholder">
+            <h4>Mean Speed: Cambridge, MA</h4>
+            <button class="load-map-btn" onclick="loadMap(this, 'maps/mean_speed.html')">Load Interactive Map</button>
+        </div>
+      `,
+      img: "images/gtfs.jpg",
+      link: "https://github.com/CityScope/pyGTFSHandler"
+    },
+    {
+      id: 5,
+      categories: ["Code", "Mobility", "GIS"],
+      year: "2025",
+      title: "UrbanAccessAnalyzer",
+      institutions: ["MIT Media Lab City Science (USA)", "Technical University of Madrid (Spain)"],
+      related: [3, 4],
+      desc: `
+        <p><strong>Fast geo-graph processing for urban accessibility.</strong></p>
+        <p><em>UrbanAccessAnalyzer</em> is a tool focused on accessibility, currently for walking and biking. It streamlines the process of downloading Points of Interest (POIs) from OpenStreetMap and analyzing the street network.</p>
+        <p>The toolbox allows for grading POIs based on attributes (e.g., park size or hospital capacity) and computing isochrones to determine the distance from any point in the street network to the nearest service. It is optimized for speed, allowing for the generation of "level of service" maps for entire cities in minutes.</p>
+        
+        <div class="map-placeholder">
+            <h4>Green Space Coverage: Parla, Madrid</h4>
+            <button class="load-map-btn" onclick="loadMap(this, 'maps/level_of_service_parla.html')">Load Interactive Map</button>
+        </div>
+      `,
+      img: "images/ls_parla.jpg",
+      link: "https://github.com/CityScope/UrbanAccessAnalyzer"
+    },
+    {
+      id: 6,
+      categories: ["Publication", "Engineering"],
+      year: "2025",
+      title: "INSAR OPERA",
+      institutions: ["DETEKTIA (Spain)", "Technical University of Madrid (Spain)"],
+      related: [11],
+      desc: `
+        <p><strong>Integration of NASA's OPERA product into DETEKTIA's infrastructure monitoring pipeline.</strong></p>
+        <p>Just after the release of NASA's OPERA preprocessed INSAR timeseries product, I integrated this product into the DETEKTIA infrastructure monitoring pipeline by developing a downloader and code to process the data and extract relevant information. INSAR allows for the detection of millimeter-range movements of infrastructure with radar satellites. DETEKTIA is a start-up founded at the Technical University of Madrid providing infrastructure monitoring services to construction companies.</p>
+      `,
+      img: "images/detektia.jpg",
       link: "#"
     },
     {
       id: 9,
-      type: "Publication",
-      year: "2025",
-      title: "Automated Seismic Estimation",
-      desc: "A Methodology for the Automated Estimation of Seismic Behaviour Modifiers from Building Footprints. Main author. Under revision at Elsevier.",
-      img: "https://placehold.co/600x600/444/fff?text=Methodology",
-      link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5419010"
-    },
-    {
-      id: 10,
-      type: "Publication",
+      categories: ["Publication", "Mobility", "GIS", "AI"],
       year: "2025",
       title: "Transport Surface Detection",
-      desc: "Transport-Related Surface Detection with Machine Learning: Analyzing Temporal Trends in Madrid and Vienna. Published in Elsevier Remote Sensing Applications.",
-      img: "https://placehold.co/600x600/2e7d32/fff?text=Surfaces",
+      institutions: ["Technical University of Madrid (Spain)", "Technical University of Vienna (Austria)"],
+      related: [12, 10],
+      desc: `
+        <p><strong>Transport-Related Surface Detection with Machine Learning: Analyzing Temporal Trends in Madrid and Vienna.</strong></p>
+        <p><em>Published in Elsevier Remote Sensing Applications (Q1 Journal in Earth Sciences).</em></p>
+        <p>I am the <strong>Main Author</strong> of this study. We investigated how machine learning can uncover historical urban trends by fine-tuning vision models to detect infrastructure (parking, roads, sidewalks) using only open data for training.</p>
+        <p>Key findings revealed distinct trajectories: Madrid's center has seen a reduction in parking and an increase in sidewalks, while Vienna's suburbs showed a sharp increase in parking surfaces outpacing road growth, indicating a car-centric development pattern.</p> 
+        
+        <img src="images/surfaces_abstract.jpg" alt="Abstract Visual" style="width:100%;">
+        
+        <p>Part of this work was presented at the <strong>II EELISA scientific competition</strong> in Budapest, Hungary, awarded <strong>1st Prize</strong>.</p>
+        <img src="images/II_EELISA.jpg" alt="Award Ceremony II EELISA" class="small-centered">
+        <p><a href="https://eelisa.eu/eelisa-student-scientific-competition-a-tradition-is-being-born/" target="_blank">Read about the competition</a></p> 
+      `,
+      img: "images/parking.jpg",
       link: "https://www.sciencedirect.com/science/article/abs/pii/S2352938525000564"
     },
     {
       id: 11,
-      type: "Publication",
+      categories: ["Publication", "Engineering", "Code"],
+      year: "Under Revision",
+      title: "Seismic Cadaster",
+      institutions: ["Technical University of Madrid (Spain)", "University of Costa Rica (Costa Rica)"],
+      related: [7, 13, 19],
+      desc: `
+        <p><strong>A Methodology for the Automated Estimation of Seismic Behaviour Modifiers from Building Footprints.</strong></p>
+        <p><em>(Under revision at Elsevier)</em></p>
+        <p>I am the <strong>Main Author</strong> of this paper. It details the methodology behind the <em>SeismicBuildingExposure</em> package. We demonstrate that for geometric irregularity assessment, a deterministic algorithmic method can surpass manual interpretation in consistency and reliability.</p>
+        <p>The work highlights the potential of fine-tuned foundational models (Mask2Former) to accelerate the creation of exposure inventories in developing countries where cadastral data is non-existent. This research was validated in pilot studies in San José (Costa Rica), Guatemala City, and Santo Domingo.</p>
+        
+        <p>Part of this work was presented at the <strong>III EELISA scientific competition</strong> in Bucharest, Romania, where it was awarded <strong>2nd Prize</strong>.</p>
+        <img src="images/III_EELISA.jpg" alt="Award Ceremony" class="small-centered">
+        <p><a href="https://caminos.upm.es/miguel-urena-pliego-premiado-con-el-segundo-premio-en-la-competicion-cientifica-eelisa-en-bucarest/" target="_blank">Read news article (UPM)</a></p>
+      `,
+      img: "images/seismic_abstract.jpg",
+      link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5419010"
+    },
+    {
+      id: 18,
+      categories: ["Engineering", "Mobility"],
+      year: "2024",
+      title: "New Tram for Madrid",
+      institutions: ["Technical University of Madrid (Spain)"],
+      related: [3, 9],
+      desc: `
+        <p><strong>Bachelor Thesis: A proposal for the South-East Tram.</strong></p>
+        <p>Inspired by the Paris T3 tramline, this project proposes a semicircular tram system to connect the working-class neighborhoods of southern and eastern Madrid (Colonia Jardín - Asamblea). These areas currently suffer from a radial metro system that forces passengers to travel through the center to reach neighboring districts.</p>
+        <img src="images/tram_2.jpg" alt="Tram Proposal Renders">
+      `,
+      img: "images/tram.jpg",
+      link: "https://oa.upm.es/83852/"
+    },
+    {
+      id: 19,
+      categories: ["Code", "Engineering", "GIS"],
+      year: "2024",
+      title: "SeismicBuildingExposure",
+      institutions: ["Technical University of Madrid (Spain)", "University of Costa Rica (Costa Rica)"],
+      related: [11],
+      desc: `
+        <p><strong>Automated seismic risk assessment using computer vision.</strong></p>
+        <p>Creating building inventories for seismic risk assessment is traditionally slow. <em>SeismicBuildingExposure</em> is an open-source Python package I developed that automates the extraction of structural behaviour modifiers directly from aerial imagery. It integrates fine-tuned instance segmentation models (Mask2Former) to digitize building footprints and applies geometric algorithms to calculate irregularity indices.</p>
+        <p>This tool was validated in pilot studies in San José (Costa Rica), Guatemala City, and Santo Domingo.</p>
+      `,
+      img: "images/relative_position.jpg",
+      link: "https://github.com/GeomaticsCaminosUPM/SeismicBuildingExposure"
+    },
+    {
+      id: 10,
+      categories: ["Mobility"],
       year: "2024",
       title: "Carbon Integrity Index",
-      desc: "Technical report of the Climate Action Observatory in 7 Spanish cities. Co-authored the mobility section of the resport.",
-      img: "https://placehold.co/600x600/666/fff?text=Carbon+Index",
+      institutions: ["Climate Action Observatory (Spain)"],
+      related: [3, 9, 12],
+      desc: `
+        <p><strong>Technical report for the Climate Action Observatory.</strong></p>
+        <p>I authored the mobility section of this technical report analyzing the decarbonization pathways of 7 major Spanish cities. The report evaluates current policies against net-zero targets, using open data provided by the city councils. My transit quality map of Zaragoza appeared in <a href="https://www.eldiario.es/aragon/sociedad/informe-destapa-graves-carencias-zaragoza-movilidad-apuesta-linea-2-tranvia-paliarlo_1_11798661.html" target="_blank">national press</a>.</p>
+        <p>This work was presented to the <a href="https://www.youtube.com/watch?v=uUuWV3ntzWg" target="_blank">Madrid City Council</a>.</p></p>
+        <img src="images/oac_presentation.jpg" alt="Presentation to City Council" class="small-centered">
+      `,
+      img: "images/oac.jpg",
       link: "https://observatorioaccionclimatica.org/inicio/informes"
     },
     {
       id: 12,
-      type: "Publication",
-      year: "2024",
-      title: "New Tram for Madrid",
-      desc: "Bachelor thesis: New tram system proposal and construction project for the south of Madrid (Colonia Jardín - Asamblea). Inspired by the concept of the semicurcular tramline T3 of Paris I proposed in my Bachelor Thesis (a civil engineering contrcutctions project) the construction of a Tram system that connects all the poor eastern and southern neighborhoods of Madrid between them to solve the issue of the radial metro system with a cheaper system suitable for less demanded routes. I explore the potential of trams to transform the streetscape reducing space for cars and creating new green space and bike lanes. This transpformation potential not seen in other trnasport modes like the subway make it even more important for areas of the city long forgotten by the city council.",
-      img: "https://placehold.co/600x600/777/fff?text=Tram+Project",
-      link: "https://oa.upm.es/83852/"
+      categories: ["Code", "GIS"],
+      year: "2023",
+      title: "GeoVisionDataset",
+      institutions: ["Technical University of Madrid (Spain)", "Technical University of Vienna (Austria)"],
+      related: [9, 11],
+      desc: `
+        <p><strong>A pipeline for creating global aerial AI datasets.</strong></p>
+        <p>Training computer vision models for urban analysis often requires massive manual labeling. <em>GeoVisionDataset</em> solves this by automating the creation of semantic segmentation datasets using open geospatial data. It pairs aerial imagery (from global WMS/WMTS services) with vector ground truth from OpenStreetMap.</p>
+      `,
+      img: "images/buildings_dataset.jpg",
+      link: "https://github.com/GeomaticsCaminosUPM/GeoVisionDataset"
     },
     {
       id: 13,
-      type: "Publication",
+      categories: ["Publication", "Engineering", "AI"],
       year: "2023",
-      title: "Safe(r) LGBTQ+ Spaces",
-      desc: "This is the resulting article of a course I took at TU Wien at the Interdisciplinary Centre for Urban Culture and Public Space with an antropologyst. Here I learned how to apply qualitative techiniques to research about urban fenomena. This article is written together with two other people: Gréta Semancová and Theresa Korn. We explored how the LGBTIQ+ community creates safe spaces in cities, how the community concentrates in bigger cities and the differences between different parts of the community, especially between men and the rest. One interesting and complicated aspect of the article is that it openly talks about sex and other ways of building sexual relations in a nontraditional way that happen in the community. A very difficult topic to research. Exploring Safe(r) Spaces for the LGBTQ+ Community in Graz. Everyday Life & Intersectionality. Annual Reader 2023, TU Wien.",
-      img: "https://placehold.co/600x600/888/fff?text=Urban+Culture",
-      link: "https://skuor.tuwien.ac.at/wp-content/uploads/2025/02/final-version_reader-2025.pdf"
+      title: "Building Height Estimation",
+      institutions: ["Technical University of Madrid (Spain)"],
+      related: [11, 7],
+      desc: `
+        <p><strong>Automatic Building Height Estimation: Machine Learning Models for Urban Image Analysis.</strong></p>
+        <p><em>Published in MDPI Applied Sciences. Q2 in Engineering.</em></p>
+        <p>I am the main author of this paper. We presented a method to estimate building heights using single street-view images. We developed a semantic segmentation model based on HRNet to identify buildings and reference objects (like cars) to calculate height geometrically.</p>
+      `,
+      img: "images/height_abstract.jpg",
+      link: "https://www.mdpi.com/2076-3417/13/8/5037"
     },
     {
       id: 14,
-      type: "Publication",
+      categories: ["Research", "Community"],
       year: "2023",
-      title: "Building Height Estimation",
-      desc: "Automatic Building Height Estimation: Machine Learning Models for Urban Image Analysis. Published in MDPI Applied Sciences (Q2 Engineering).",
-      img: "https://placehold.co/600x600/999/fff?text=Height+ML",
-      link: "https://oa.upm.es/83845/"
+      title: "Safe(r) LGBTQ+ Spaces",
+      institutions: ["Technical University of Vienna (Austria)"],
+      related: [16, 2],
+      desc: `
+        <p><strong>Exploring Safe(r) Spaces for the LGBTQ+ Community in Graz.</strong></p>
+        <p><em>Everyday Life & Intersectionality. Annual Reader 2023, TU Wien.</em></p>
+        <p>Coursework for a course at the Interdisciplinary Centre for Urban Culture and Public Space at TU Wien.</p>
+        <p>This qualitative research explores how the LGBTQ+ community constructs safety in the city of Graz, Austria. Co-authored with Gréta Semancová and Theresa Korn, we examined the tension between "official" safe spaces and the informal, sometimes transient spaces created by the community.</p>
+      `,
+      img: "images/lgbt_graz.jpg",
+      link: "https://skuor.tuwien.ac.at/wp-content/uploads/2025/02/final-version_reader-2025.pdf"
     },
-    // {
-    //   id: ,
-    //   type: Music,
-    //   year: 2020
-    //   title: "Music for the short film Jean",
-    //   desc: "Composed the music for a short film...",
-    //   img: "images/jean.jpg", 
-    //   link: "https://www.youtube.com/watch?v=Il-dA8WoSqo" add preview
-    // },
-    // {
-    //   id: ,
-    //   type: ,
-    //   year: 2022
-    //   title: "Logistics industry plan",
-    //   desc: "For the Madrid State presented by the main opposition party elections I was responsible for the creation of an industry plan for the east of Madrid. I met the main stakeholders and company leaders in the region over 30 people, attended over 10 high end meetings at the Madrid State Parliment and wrote the plan. It was very uncommon to have a 20 year old person attending this kind of meetings and being responsible for an important part of the political program of the organization. Even though this never became a reality this gave me hands own experience in how political agreements can be made. Change has to be decided at a political level and having experience there is very valuable. More info about the proposal I made: Este polo tiene como objetivo promover la adaptación del sector de la logística en la Comunidad de Madrid beneficiando a empresas y usuarios desde una perspectiva ecológica. Mediante este polo, se creará una autoridad logística en la Comunidad de Madrid, que apoye a optimizar las operaciones de las empresas del sector, la creación de infraestructuras para el reparto de mercancías, la creación de una red de microhubs de reparto y la adaptación de flotas. Este polo se desarrollará en el Corredor del Henares. ",
-    //   img: "images/polo_industrial.jpg", 
-    //   link: "https://masmadrid.org/mas-madrid-presenta-el-plan-reindustria-siete-polos-de-desarrollo-para-articular-la-politica-industrial-de-la-comunidad-de-madrid/" 
-    // }
+    {
+      id: 15,
+      categories: ["Mobility", "Policy", "Community"],
+      year: "2022",
+      title: "Logistics Industry Plan",
+      institutions: [],
+      related: [1],
+      desc: `
+        <p><strong>Regional Industrial Plan for East Madrid.</strong></p>
+        <p>I was responsible for drafting the logistics industry strategy ("Polo Industrial Ecologístico A2") for the main opposition party in the Madrid State elections. I conducted over 30 stakeholder interviews with company leaders and unions to craft the "Reindustria" plan. The proposal focused on creating a logistics authority to coordinate micro-hubs for last-mile delivery and adapt fleets for decarbonization.</p> 
+        <p>This experience provided me with firsthand knowledge of how policy is negotiated, bridging the gap between technical and political reality.</p>
+      `,
+      img: "images/reindustria.jpg",
+      link: "https://masmadrid.org/mas-madrid-presenta-el-plan-reindustria-siete-polos-de-desarrollo-para-articular-la-politica-industrial-de-la-comunidad-de-madrid/"
+    },
+    {
+      id: 16,
+      categories: ["Art", "Education"],
+      year: "2022",
+      title: "Maths in Dance",
+      institutions: ["Technical University of Madrid (Spain)"],
+      related: [17],
+      desc: `
+        <p><strong>Visualizing geometric concepts through movement.</strong></p>
+        <p>Created an educational performance for the Technical University of Madrid (UPM) that mixes live dance with projected video art. I was responsible for the core concept, script, filming, editing, and creating 3D animations that interacted with the dancers to explain complex mathematical concepts intuitively.</p>
+        <p>This project was presented at the <strong>I EELISA international conference</strong> in Bucharest, Romania.</p>
+        <img src="images/I_EELISA.jpg" alt="I EELISA Conference" class="small-centered">
+        <p><a href="https://blogs.upm.es/sseries-eelisa/sseries-participates-in-the-i-eelisa-international-conference/" target="_blank">Conference details</a></p>
+      `,
+      img: "images/maths_in_dance.jpg",
+      link: "https://www.youtube.com/watch?v=SHMvswrmMYo"
+    },
+    {
+      id: 17,
+      categories: ["Art", "Music"],
+      year: "2019",
+      title: "Music for 'Jean'",
+      institutions: [],
+      related: [16],
+      desc: `
+        <p>Composed the original soundtrack for the short film <em>Jean</em>.</p>
+      `,
+      img: "images/jean.jpg", 
+      link: "https://www.youtube.com/watch?v=Il-dA8WoSqo"
+    }
   ];
 
   // --- RENDER GRID ---
@@ -608,13 +1024,15 @@
     projectsData.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
+      // When clicking the card, we trigger openModal (which pushes history)
       card.onclick = () => openModal(item.id);
       
-      // We use the image as background or img tag. Img tag handles object-fit well.
+      const categoryStr = item.categories.join(' / ');
+
       card.innerHTML = `
         <img src="${item.img}" alt="${item.title}" loading="lazy">
         <div class="card-content">
-          <span class="card-eyebrow">${item.year} &mdash; ${item.type}</span>
+          <span class="card-meta">${item.year} &mdash; ${categoryStr}</span>
           <h3 class="card-title">${item.title}</h3>
         </div>
       `;
@@ -622,23 +1040,57 @@
     });
   }
 
-  // --- MODAL LOGIC ---
+  // --- MODAL LOGIC & HISTORY API ---
   const modal = document.getElementById('projectModal');
   const mImg = document.getElementById('modalImg');
-  const mEyebrow = document.getElementById('modalEyebrow');
+  const mTags = document.getElementById('modalTags');
+  const mYear = document.getElementById('modalYear');
   const mTitle = document.getElementById('modalTitle');
+  const mInstitutions = document.getElementById('modalInstitutions');
+  const mInstitutionsList = document.getElementById('modalInstitutionsList');
   const mText = document.getElementById('modalText');
   const mLink = document.getElementById('modalLink');
+  
+  // Related Projects Elements
+  const mRelated = document.getElementById('modalRelated');
+  const relatedGrid = document.getElementById('relatedGrid');
 
-  function openModal(id) {
+  /**
+   * 1. Render content into the modal DOM elements.
+   *    Separated from 'openModal' so we can use it when navigating Back/Forward.
+   */
+  function renderModalContent(id) {
     const item = projectsData.find(p => p.id === id);
     if(!item) return;
 
     mImg.src = item.img;
-    mEyebrow.textContent = `${item.year} | ${item.type}`;
     mTitle.textContent = item.title;
-    mText.textContent = item.desc;
+    mYear.textContent = item.year;
+    mText.innerHTML = item.desc;
     
+    // Render Tags
+    mTags.innerHTML = '';
+    item.categories.forEach(cat => {
+        const span = document.createElement('span');
+        span.className = 'modal-tag';
+        span.textContent = cat;
+        mTags.appendChild(span);
+    });
+
+    // Render Institutions
+    mInstitutionsList.innerHTML = '';
+    if(item.institutions && item.institutions.length > 0) {
+        mInstitutions.style.display = 'block';
+        item.institutions.forEach(inst => {
+            const li = document.createElement('li');
+            li.textContent = inst;
+            mInstitutionsList.appendChild(li);
+        });
+    } else {
+        mInstitutions.style.display = 'none';
+    }
+
+    // Handle Link button
     if(item.link && item.link !== "#") {
         mLink.style.display = 'inline-block';
         mLink.href = item.link;
@@ -646,21 +1098,106 @@
         mLink.style.display = 'none';
     }
 
+    // Render Related Projects
+    relatedGrid.innerHTML = '';
+    if(item.related && item.related.length > 0) {
+        mRelated.style.display = 'block';
+        item.related.forEach(relatedId => {
+            const relProject = projectsData.find(p => p.id === relatedId);
+            if(relProject) {
+                const rCard = document.createElement('div');
+                rCard.className = 'related-card';
+                // Recursive call: clicking related pushes NEW state
+                rCard.onclick = () => openModal(relatedId); 
+                rCard.innerHTML = `
+                    <img src="${relProject.img}" alt="${relProject.title}">
+                    <h6>${relProject.title}</h6>
+                `;
+                relatedGrid.appendChild(rCard);
+            }
+        });
+    } else {
+        mRelated.style.display = 'none';
+    }
+
+    // Show modal
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+    modal.scrollTop = 0;
   }
 
-  function closeModal() {
+  /**
+   * 2. Open Modal (User Action)
+   *    Renders content AND pushes a new history state.
+   */
+  function openModal(id) {
+    renderModalContent(id);
+    // Push new state with the project ID
+    history.pushState({id: id}, '', `#project-${id}`);
+  }
+
+  /**
+   * 3. Close UI (Helper)
+   *    Just hides the visual modal. Does not touch history.
+   */
+  function closeUI() {
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
 
-  // Close modal if clicking outside content
-  modal.addEventListener('click', (e) => {
-    if(e.target === modal) closeModal();
+  /**
+   * 4. Request Close (User Action: Clicking X or Overlay)
+   *    Instead of just closing, we go 'Back' in history if possible.
+   *    This triggers the 'popstate' event which actually closes the UI.
+   */
+  function requestClose() {
+    // If we have a hash, it means we are in a 'project' state. Go back.
+    if (window.location.hash) {
+        history.back();
+    } else {
+        // Fallback: just close UI if URL is clean (rare)
+        closeUI();
+    }
+  }
+
+  /**
+   * 5. Listen for Browser Back/Forward Navigation
+   */
+  window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.id) {
+        // We moved to a project state -> Render that project
+        renderModalContent(event.state.id);
+    } else {
+        // We moved to a state without an ID (like the root page) -> Close Modal
+        closeUI();
+    }
   });
 
-  // Init
+  /**
+   * 6. Handle Initial Load (Direct Links)
+   *    If user loads 'index.html#project-5', open that modal immediately.
+   */
+  window.addEventListener('load', () => {
+    if(window.location.hash.startsWith('#project-')) {
+        const id = parseInt(window.location.hash.replace('#project-', ''));
+        if(!isNaN(id)) {
+            // Check if ID exists in data
+            const exists = projectsData.find(p => p.id === id);
+            if(exists) {
+                // Replace the current state so we have a valid history object to go back from
+                history.replaceState({id: id}, '', window.location.hash);
+                renderModalContent(id);
+            }
+        }
+    }
+  });
+
+  // Modal event listener to close when clicking outside content (overlay)
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) requestClose();
+  });
+
+  // Init Grid
   renderGrid();
 
 </script>
