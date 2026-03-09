@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+
+% --- 1. PAGE GEOMETRY ---
+% 1275x1650px @ 150dpi = 8.5 x 11 inches (Standard US Letter)
+\usepackage[letterpaper, margin=0.75in, top=0.75in, bottom=1in]{geometry}
+
+% --- 2. FONTS & PACKAGES ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tgheros} % Helvetica/Arial clone
+\renewcommand{\familydefault}{\sfdefault} 
+\usepackage{microtype} 
+\usepackage{parskip} 
+
+% --- 3. COLORS ---
+\usepackage[table]{xcolor}
+\definecolor{AccentColor}{HTML}{D81B60} 
+\definecolor{DarkGrey}{HTML}{111111}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{TagBg}{HTML}{FCE4EC}
+\definecolor{TagText}{HTML}{880E4F}
+\definecolor{CVBg}{HTML}{FFF0F5}
+\definecolor{WarningBg}{HTML}{FFF3CD}
+\definecolor{WarningText}{HTML}{856404}
+
+% --- 4. GRAPHICS & LINKS ---
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usepackage[hidelinks, colorlinks=true, urlcolor=AccentColor, linkcolor=AccentColor]{hyperref}
+\usepackage{tcolorbox} 
+
+% --- 5. CUSTOM COMMANDS ---
+
+% Tag pill style
+\newcommand{\tagpill}[1]{%
+    \colorbox{TagBg}{\textcolor{TagText}{\bfseries\scriptsize #1}}%
+}
+
+% Unified Project Command
+% Usage: \project{Title}{Year | Categories}{Institutions}{ImageFile}{Description}{Link}
+\newcommand{\project}[6]{
+    \noindent
+    \begin{minipage}{\textwidth}
+        \vspace{1.5em}
+        % Image on Left (45% width)
+        \begin{minipage}[c]{0.45\textwidth}
+            \centering
+            % Make image clickable too
+            \href{#6}{\includegraphics[width=\linewidth, height=6cm, keepaspectratio]{#4}}
+        \end{minipage}
+        \hfill
+        % Text on Right (50% width)
+        \begin{minipage}[c]{0.5\textwidth}
+            % Title is now a link
+            {\Large\bfseries\href{#6}{\textcolor{AccentColor}{#1}}} \par
+            \vspace{0.4em}
+            {\footnotesize\bfseries\textcolor{LightGrey}{#2}} \par
+            \vspace{0.2em}
+            {\scriptsize\itshape #3} \par
+            \vspace{0.8em}
+            {\small #5} \par
+            \vspace{0.5em}
+            % Explicit link at bottom
+            \href{#6}{\footnotesize\bfseries\textcolor{AccentColor}{$\rightarrow$ View Project}}
+        \end{minipage}
+        \vspace{1.5em}
+        % Subtle separator line
+        {\color{LightGrey!20}\hrule height 1pt} 
+    \end{minipage}
+}
+
+\begin{document}
+
+% ====================================================================
+% COVER PAGE
+% ====================================================================
+\thispagestyle{empty}
+
+\begin{center}
+    \vspace*{1cm}
+    
+    % --- ONLINE PORTFOLIO WARNING ---
+    \begin{tcolorbox}[colback=WarningBg, colframe=WarningText, width=0.8\textwidth, arc=5pt, boxrule=1pt]
+        \centering
+        \textbf{Interactive Web Portfolio Available} \\
+        \small This document is a summary. View the full portfolio at: \\
+        \vspace{0.2em}
+        \href{https://miguelurenapliego.github.io/}{\textbf{https://miguelurenapliego.github.io/}}
+    \end{tcolorbox}
+
+    \vspace{1.5cm}
+    
+    % Circular Profile Picture
+    \begin{tikzpicture}
+        \clip (0,0) circle (3cm);
+        \node at (0,0) {\includegraphics[width=6cm]{images/foto_Miguel.jpg}}; 
+    \end{tikzpicture}
+    
+    \vspace{1.5cm}
+    
+    {\Huge \bfseries Miguel Ureña Pliego} \\
+    \vspace{0.5cm}
+    % {\Large Visiting Student @ MIT Media Lab (City Science)} \\
+    {\large MEng Civil Engineering Student @ UPM}
+    
+    \vspace{1.5cm}
+    
+    \begin{minipage}{0.8\textwidth}
+        \centering \large \color{DarkGrey}
+        I operate at the intersection of urbanism, engineering, artificial intelligence, and computer science. My work focuses on developing scalable computational frameworks to measure global accessibility and creating generative AI tools for participatory, bottom-up democratic planning.
+    \end{minipage}
+    
+    \vfill
+    
+    {\color{AccentColor} \rule{0.2\textwidth}{2pt}} \\
+    \vspace{0.5cm}
+    \textbf{Portfolio \& Curriculum Vitae} \\
+    2025
+    
+    \vspace*{1cm}
+\end{center}
+\newpage
+
+% ====================================================================
+% CV SECTION
+% ====================================================================
+\section*{Curriculum Vitae}
+
+\begin{tcolorbox}[colback=CVBg, colframe=white, boxrule=0pt, arc=5pt]
+    \begin{minipage}[t]{0.32\textwidth}
+        \subsection*{Contact}
+        {\small
+        \textbf{Email:} miguelup@mit.edu \\
+        \textbf{Alt:} miguel.urena@upm.es \\
+        \href{https://github.com/MiguelUrenaPliego}{GitHub Profile} \\
+        \href{https://www.linkedin.com/in/miguel-ureña-pliego}{LinkedIn Profile}
+        }
+        
+        \subsection*{Technical Skills}
+        \raggedright
+        \tagpill{Python} \tagpill{PyTorch} \tagpill{GeoPandas} \tagpill{QGIS} \tagpill{Docker} \tagpill{Git} \tagpill{NetworkX} \tagpill{Julia} \tagpill{Supercomputing}
+        
+        \subsection*{Languages}
+        {\small
+        \textbf{Spanish:} Native \\
+        \textbf{English:} Fluent (C1 TOEFL 107) \\
+        \textbf{German:} Fluent (C1)
+        }
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.64\textwidth}
+        \subsection*{Experience}
+        \textbf{Research Internship | Smart EFYL / UAS Frankfurt} \\
+        {\footnotesize Mar 2026 – Apr 2026 | Cameroon} \\
+        {\small Developing ZIP code systems and micromobility solutions.}
+        
+        \vspace{0.5em}
+        
+        \textbf{Research Assistant | UPM Advanced Geomatics} \\
+        {\footnotesize Feb 2022 – Jul 2026 | Spain} \\
+        {\small Computer vision for urban imagery and transport modeling.}
+
+        \vspace{0.5em}
+
+        \textbf{Visiting Student | MIT Media Lab (City Science)} \\
+        {\footnotesize Sep 2025 – Feb 2026 | USA} \\
+        {\small Developing "Synthetic Cityzens" (AI agents) and global accessibility frameworks.}
+        
+        \vspace{0.5em}
+        
+        \textbf{Internship | Detektia} \\
+        {\footnotesize Jun 2025 – Aug 2025 | Spain} \\
+        {\small Integration of NASA OPERA InSAR products for infrastructure monitoring.}
+        
+        \subsection*{Education}
+        \textbf{MEng Civil Engineering} | UPM \& FUAS \\
+        {\footnotesize 2024–2026}
+        
+        \textbf{BEng Civil Engineering} | UPM \& TU Wien \\
+        {\footnotesize 2020–2024 | Specialization in Transport \& Planning}
+
+        \subsection*{Awards}
+        {\small
+        \begin{itemize}
+            \item UPM-MIT Research Grant (2025)
+            \item 2nd Prize, III EELISA Scientific Competition (2025)
+            \item TYPSA Award for Best Academic Record (2025)
+            \item 1st Prize, II EELISA Scientific Competition (2024)
+        \end{itemize}
+        }
+    \end{minipage}
+\end{tcolorbox}
+\newpage
+
+% ====================================================================
+% PROJECTS SECTION
+% ====================================================================
+\section*{Selected Projects}
+
+% 2026 Projects
+% ---------------------------------------------------------
+\project{Micromobility in Cameroon}{Planned 2026 | Research, GIS}
+{Smart EFYL, UAS Frankfurt, MIT Media Lab}
+{images/address_plaque.jpg}
+{
+\textbf{Addressing \& Road Mapping.} A pilot project proposing a framework for shared mobility in Fotouni/Duala. We are deploying a digital addressing system using AI-segmented building footprints and a taxi-hailing app that records road quality data. I am leading the technical setup of GNSS surveying.
+}
+{https://miguelurenapliego.github.io/} 
+
+\project{Seismic ML Classifier}{2026 | Publication, Engineering}
+{ENSAM (France), UPM (Spain)}
+{images/seismic.jpg}
+{
+\textbf{Identifying structural systems from space.} An ongoing collaboration to classify building materials (concrete vs. masonry) using only geospatial attributes (footprint shape, height). Results to be published in 2026.
+}
+{https://miguelurenapliego.github.io/} 
+
+% 2025 Projects
+% ---------------------------------------------------------
+\project{Synthetic Cityzens}{2025 | Research, AI, Community}
+{MIT Media Lab City Science (USA)}
+{images/ai_street.jpg}
+{
+\textbf{Generative AI and LLMs supporting community-driven planning.}
+Traditional planning faces a participation crisis. "Synthetic Cityzens" creates AI agents based on ethnographic data that can evaluate urban changes. I am assisting PhD researcher Leticia Izquierdo in the technical development of these agents, creating simulation environments using Google Street View data.
+}
+{https://www.media.mit.edu/projects/city-science-lab-san-francisco/overview/}
+
+\project{Global Transport Quality Map}{2025 | Research, Visualization}
+{MIT Media Lab, UPM}
+{images/ls_population_donostia.jpg}
+{
+\textbf{Mapping access to opportunity.} A planned publication and platform visualizing public transport coverage quality globally. Moving beyond "distance to station," this project measures frequency, speed, and connectivity using GTFS data to highlight infrastructure gaps in the Global South and North.
+}
+{https://miguelurenapliego.github.io/} 
+
+\project{pyGTFSHandler}{2025 | Code, Mobility}
+{MIT Media Lab, UPM}
+{images/gtfs.jpg}
+{
+\textbf{Python framework for transit data.} I developed this package to download and clean GTFS data. It implements algorithms for Service Intensity, advanced headway calculations (handling multiple lines), and commercial speed analysis.
+}
+{https://github.com/CityScope/pyGTFSHandler}
+
+\project{UrbanAccessAnalyzer}{2025 | Code, GIS}
+{MIT Media Lab, UPM}
+{images/ls_parla.jpg}
+{
+\textbf{Fast geo-graph processing.} A toolbox for computing walking/biking isochrones and grading POIs (Points of Interest) from OpenStreetMap. Optimized for speed, it generates "level of service" maps for entire cities in minutes.
+}
+{https://github.com/CityScope/UrbanAccessAnalyzer}
+
+\project{Transport Surface Detection}{2025 | Q1 Publication}
+{UPM (Spain), TU Wien (Austria)}
+{images/parking.jpg}
+{
+\textbf{Main Author.} Published in \textit{Elsevier Remote Sensing Applications}. We fine-tuned vision models to detect infrastructure (parking, roads) using open data. Revealed distinct trends: Madrid reduced parking while Vienna's suburbs increased surface parking. \textbf{Awarded 1st Prize at II EELISA Scientific Competition.}
+}
+{https://www.sciencedirect.com/science/article/abs/pii/S2352938525000564}
+
+\project{INSAR OPERA Integration}{2025 | Internship}
+{Detektia, UPM}
+{images/detektia.jpg}
+{
+Developed the pipeline to integrate NASA's OPERA InSAR product into Detektia's commercial infrastructure monitoring system. This allows for the detection of millimeter-range movements in infrastructure using radar satellites.
+}
+{https://miguelurenapliego.github.io/} 
+
+% Late 2024 / Ongoing
+% ---------------------------------------------------------
+
+\project{Seismic Cadaster}{Under Revision | Publication}
+{UPM, Univ. of Costa Rica}
+{images/seismic_abstract.jpg}
+{
+\textbf{Main Author.} Methodology for automated estimation of seismic modifiers from footprints. Validated in San José and Guatemala City. Awarded \textbf{2nd Prize at III EELISA Scientific Competition}.
+}
+{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5419010}
+
+% 2024 Projects
+% ---------------------------------------------------------
+\project{New Tram for Madrid}{2024 | BEng Thesis}
+{Technical University of Madrid}
+{images/tram.jpg}
+{
+\textbf{Bachelor Thesis.} Proposal for a semicircular tram system connecting working-class neighborhoods in South-East Madrid, addressing the limitations of the current radial metro system.
+}
+{https://oa.upm.es/83852/}
+
+\project{Carbon Integrity Index}{2024 | Technical Report}
+{Climate Action Observatory}
+{images/oac.jpg}
+{
+Authored the mobility section of a decarbonization report for 7 Spanish cities. My transit quality map of Zaragoza was featured in national press. Presented findings to the Madrid City Council.
+}
+{https://observatorioaccionclimatica.org/inicio/informes}
+
+% 2023 Projects
+% ---------------------------------------------------------
+\project{Building Height Estimation}{2023 | Q2 Publication}
+{UPM Advanced Geomatics Group}
+{images/height_abstract.jpg}
+{
+\textbf{Main Author.} Published in \textit{MDPI Applied Sciences}. Developed a semantic segmentation model (HRNet) to estimate building heights using single street-view images by using cars as geometric references.
+}
+{https://www.mdpi.com/2076-3417/13/8/5037}
+
+\project{Safe(r) LGBTQ+ Spaces}{2023 | Research}
+{TU Wien (Austria)}
+{images/lgbt_graz.jpg}
+{
+\textbf{Everyday Life \& Intersectionality.} Qualitative research co-authored with G. Semancová exploring how the LGBTQ+ community constructs safety in Graz, Austria, examining the tension between official and informal spaces.
+}
+{https://skuor.tuwien.ac.at/wp-content/uploads/2025/02/final-version_reader-2025.pdf}
+
+% 2022 Projects
+% ---------------------------------------------------------
+
+\project{Logistics Industry Plan}{2022 | Policy}
+{Regional Politics}
+{images/reindustria.jpg}
+{
+Drafted the "Polo Industrial Ecologístico A2" strategy for the main opposition party at the Madrid State elections. Conducted 30+ stakeholder interviews to design a plan for a logistics authority to coordinate micro-hubs and fleet decarbonization.
+}
+{https://masmadrid.org/mas-madrid-presenta-el-plan-reindustria-siete-polos-de-desarrollo-para-articular-la-politica-industrial-de-la-comunidad-de-madrid/}
+
+\project{Maths in Dance}{2022 | Education, Art}
+{Technical University of Madrid}
+{images/maths_in_dance.jpg}
+{
+\textbf{Visualizing geometric concepts.} Created an educational performance mixing live dance with projected 3D animations to explain geometric concepts. Responsible for concept, filming, and animation.
+}
+{https://www.youtube.com/watch?v=SHMvswrmMYo}
+
+\vfill
+\begin{center}
+    \footnotesize \color{LightGrey}
+    Miguel Ureña Pliego | miguelup@mit.edu | miguel.urena@upm.es
+\end{center}
+
+\end{document}
